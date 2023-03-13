@@ -4,12 +4,9 @@ import markdown
 with open('presentation.md', 'r') as f:
     content = f.read()
 
-# Split the content into slides based on headings
-slides = content.split('# ')
-
 # Generate the HTML code for each slide
 slide_html = ''
-for i, slide in enumerate(slides):
+for i, slide in enumerate(content.split('# ')):
     slide_html += f"""
       <div class="slide" id="slide{i+1}">
         {markdown.markdown('# ' + slide)}

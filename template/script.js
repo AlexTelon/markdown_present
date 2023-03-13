@@ -3,10 +3,10 @@ let currentSlide = 1;
 function showSlide(n) {
   let slides = document.getElementsByClassName("slide");
   if (n > slides.length) {
-    currentSlide = 1;
+    currentSlide = slides.length - 1;
   }
   if (n < 1) {
-    currentSlide = slides.length;
+    currentSlide = 1;
   }
   for (let i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";
@@ -31,4 +31,8 @@ document.addEventListener("keydown", function(event) {
     nextSlide();
   }
 });
-console.log('hi');
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  showSlide(currentSlide);
+});
