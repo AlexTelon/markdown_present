@@ -1,3 +1,5 @@
+from pathlib import Path
+import webbrowser
 import markdown
 
 # Read the contents of the markdown file
@@ -35,3 +37,7 @@ page = f"""
 # Write the HTML page to a file
 with open('template/index.html', 'w') as f:
     f.write(page)
+
+
+# Open the file in a web browser
+webbrowser.open_new_tab(f"file://{Path.cwd() / 'template' / 'index.html'}")
