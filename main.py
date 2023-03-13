@@ -6,10 +6,13 @@ with open('presentation.md', 'r') as f:
 
 # Generate the HTML code for each slide
 slide_html = ''
-for i, slide in enumerate(content.split('# ')):
+slides = content.split('# ')[1:]
+n = len(slides)
+for i, slide in enumerate(slides, start=1):
     slide_html += f"""
-      <div class="slide" id="slide{i+1}">
+      <div class="slide" id="slide{i}">
         {markdown.markdown('# ' + slide)}
+        <div class="page-number" id="page-number">{i} / {n}</div>
       </div>
     """
 
