@@ -12,7 +12,7 @@ slide_html = ''
 for i, slide in enumerate(slides):
     slide_html += f"""
       <div class="slide" id="slide{i+1}">
-        {markdown.markdown(slide)}
+        {markdown.markdown('# ' + slide)}
       </div>
     """
 
