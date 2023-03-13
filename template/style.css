@@ -54,3 +54,11 @@ body {
     font-size: 1em;
     color: lightgray;
   }
+
+/* Style the videos */
+.slide video {
+  max-height: 80%;
+  max-width: 85%;
+  margin-bottom: 20px;
+  filter: brightness(50%);
+}
