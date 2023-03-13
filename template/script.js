@@ -1,17 +1,15 @@
-let currentSlide = 1;
+let currentSlide = 0;
 
 function showSlide(n) {
   let slides = document.getElementsByClassName("slide");
-  if (n > slides.length) {
-    currentSlide = slides.length - 1;
-  }
-  if (n < 1) {
-    currentSlide = 1;
-  }
+  currentSlide = Math.min(currentSlide, slides.length - 1);
+  currentSlide = Math.max(currentSlide, 0);
+
   for (let i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";
   }
-  slides[currentSlide - 1].style.display = "flex";
+
+  slides[currentSlide].style.display = "flex";
 }
 
 function nextSlide() {
@@ -30,9 +28,4 @@ document.addEventListener("keydown", function(event) {
   else if (event.keyCode === 39) {  // Right arrow
     nextSlide();
   }
-});
-
-
-document.addEventListener("DOMContentLoaded", function() {
-  showSlide(currentSlide);
 });
