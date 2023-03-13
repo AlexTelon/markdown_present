@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>My Presentation</title>
+    <style>
+      /* Style the slides */
+      .slide {
+        display: none;
+      }
+
+      /* Style the navigation buttons */
+      .nav {
+        position: fixed;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .nav button {
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide" id="slide1">
+      <h1>Slide 1</h1>
+      <p>This is the first slide.</p>
+    </div>
+    <div class="slide" id="slide2">
+      <h1>Slide 2</h1>
+      <p>This is the second slide.</p>
+    </div>
+    <div class="slide" id="slide3">
+      <h1>Slide 3</h1>
+      <p>This is the third slide.</p>
+    </div>
+    <div class="nav">
+      <span onclick="prevSlide()">&#8592;</span>
+      <span onclick="nextSlide()">&#8594;</span>
+    </div>
+    <script>
+      let currentSlide = 1;
+
+      function showSlide(n) {
+        let slides = document.getElementsByClassName("slide");
+        if (n > slides.length) {
+          currentSlide = 1;
+        }
+        if (n < 1) {
+          currentSlide = slides.length;
+        }
+        for (let i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        slides[currentSlide - 1].style.display = "block";
+      }
+
+      function nextSlide() {
+        showSlide(currentSlide++);
+      }
+
+      function prevSlide() {
+        showSlide(currentSlide--);
+      }
+
+      showSlide(currentSlide);
+
+      // Add keyboard event listeners
+      document.addEventListener("keydown", function(event) {
+        if (event.keyCode === 37) {  // Left arrow
+          prevSlide();
+        }
+        else if (event.keyCode === 39) {  // Right arrow
+          nextSlide();
+        }
+      });
+    </script>
+  </body>
+</html>
